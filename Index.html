@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DataVault</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fa;
+      color: #222;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 22px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 28px;
+    }
+
+    header p {
+      margin-top: 6px;
+      color: #d1d5db;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 25px auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 18px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    .network {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    button {
+      border: none;
+      border-radius: 10px;
+      padding: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .network button {
+      background: #eef2ff;
+      color: #111827;
+    }
+
+    .network button:hover {
+      background: #dbeafe;
+    }
+
+    .plans {
+      display: grid;
+      gap: 10px;
+    }
+
+    .plan {
+      background: #f3f4f6;
+      text-align: left;
+    }
+
+    .plan span {
+      display: block;
+      font-size: 13px;
+      color: #666;
+      margin-top: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+
+    .buy {
+      width: 100%;
+      background: #111827;
+      color: white;
+    }
+
+    #message {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>DataVault</h1>
+  <p>Buy data quickly and easily</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>1. Select Network</h2>
+
+    <div class="network">
+      <button onclick="selectNetwork('MTN')">MTN</button>
+      <button onclick="selectNetwork('Airtel')">Airtel</button>
+      <button onclick="selectNetwork('Glo')">Glo</button>
+      <button onclick="selectNetwork('9mobile')">9mobile</button>
+    </div>
+
+    <p id="selectedNetwork"></p>
+  </div>
+
+  <div class="card">
+    <h2>2. Select Data Plan</h2>
+
+    <div class="plans">
+      <button class="plan" onclick="selectPlan('500MB', 200)">
+        500MB — ₦200
+        <span>30 days</span>
+      </button>
+
+      <button class="plan" onclick="selectPlan('1GB', 350)">
+        1GB — ₦350
+        <span>30 days</span>
+      </button>
+
+      <button class="plan" onclick="selectPlan('2GB', 650)">
+        2GB — ₦650
+        <span>30 days</span>
+      </button>
+
+      <button class="plan" onclick="selectPlan('5GB', 1500)">
+        5GB — ₦1,500
+        <span>30 days</span>
+      </button>
+    </div>
+
+    <p id="selectedPlan"></p>
+  </div>
+
+  <div class="card">
+    <h2>3. Phone Number</h2>
+
+    <input
+      type="tel"
+      id="phone"
+      placeholder="Enter phone number"
+      maxlength="11"
+    >
+
+    <button class="buy" onclick="buyData()">
+      Continue
+    </button>
+
+    <p id="message"></p>
+  </div>
+
+</div>
+
+<script>
+
+let network = "";
+let plan = "";
+let price = 0;
+
+function selectNetwork(name) {
+  network = name;
+
+  document.getElementById("selectedNetwork").innerText =
+    "Selected network: " + name;
+}
+
+function selectPlan(name, amount) {
+  plan = name;
+  price = amount;
+
+  document.getElementById("selectedPlan").innerText =
+    "Selected plan: " + name + " — ₦" + amount;
+}
+
+function buyData() {
+
+  const phone = document.getElementById("phone").value;
+  const message = document.getElementById("message");
+
+  if (network === "") {
+    message.innerText = "Please select a network.";
+    return;
+  }
+
+  if (plan === "") {
+    message.innerText = "Please select a data plan.";
+    return;
+  }
+
+  if (phone.length !== 11) {
+    message.innerText = "Please enter a valid 11-digit phone number.";
+    return;
+  }
+
+  message.innerText =
+    "Order ready: " + plan + " " + network +
+    " for " + phone + ". Amount: ₦" + price;
+
+}
+
+</script>
+
+</body>
+</html>
