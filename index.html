@@ -1,234 +1,460 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DataVault</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<title>DataVaulti</title>
 
-    body {
-      background: #f5f7fa;
-      color: #222;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
 
-    header {
-      background: #111827;
-      color: white;
-      padding: 22px;
-      text-align: center;
-    }
+body {
+  background: #f6f8fb;
+  color: #172033;
+  padding-bottom: 80px;
+}
 
-    header h1 {
-      font-size: 28px;
-    }
+/* HEADER */
 
-    header p {
-      margin-top: 6px;
-      color: #d1d5db;
-    }
+.header {
+  background: #111827;
+  color: white;
+  padding: 22px 20px 30px;
+  border-radius: 0 0 25px 25px;
+}
 
-    .container {
-      max-width: 500px;
-      margin: 25px auto;
-      padding: 20px;
-    }
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+}
 
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 15px;
-      margin-bottom: 18px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    }
+.logo span {
+  color: #22c55e;
+}
 
-    h2 {
-      margin-bottom: 15px;
-    }
+.header p {
+  margin-top: 7px;
+  color: #d1d5db;
+  font-size: 14px;
+}
 
-    .network {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
+/* CONTAINER */
 
-    button {
-      border: none;
-      border-radius: 10px;
-      padding: 15px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+.container {
+  max-width: 520px;
+  margin: auto;
+  padding: 18px;
+}
 
-    .network button {
-      background: #eef2ff;
-      color: #111827;
-    }
+/* BALANCE CARD */
 
-    .network button:hover {
-      background: #dbeafe;
-    }
+.balance {
+  background: white;
+  padding: 20px;
+  border-radius: 18px;
+  margin-top: -5px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
 
-    .plans {
-      display: grid;
-      gap: 10px;
-    }
+.balance small {
+  color: #6b7280;
+}
 
-    .plan {
-      background: #f3f4f6;
-      text-align: left;
-    }
+.balance h2 {
+  margin-top: 7px;
+  font-size: 27px;
+}
 
-    .plan span {
-      display: block;
-      font-size: 13px;
-      color: #666;
-      margin-top: 5px;
-    }
+/* SECTION */
 
-    input {
-      width: 100%;
-      padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      font-size: 16px;
-      margin-bottom: 12px;
-    }
+.section {
+  margin-top: 25px;
+}
 
-    .buy {
-      width: 100%;
-      background: #111827;
-      color: white;
-    }
+.section-title {
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
 
-    #message {
-      margin-top: 15px;
-      text-align: center;
-      font-weight: bold;
-    }
-  </style>
+/* NETWORKS */
+
+.networks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.network {
+  border: none;
+  background: white;
+  padding: 17px;
+  border-radius: 15px;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+}
+
+/* DATA PLANS */
+
+.plans {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.plan {
+  background: white;
+  padding: 18px;
+  border-radius: 15px;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.plan strong {
+  font-size: 19px;
+}
+
+.plan p {
+  color: #6b7280;
+  margin-top: 6px;
+  font-size: 13px;
+}
+
+.plan b {
+  display: block;
+  margin-top: 10px;
+  font-size: 17px;
+}
+
+/* BUY SECTION */
+
+.buy-card {
+  background: white;
+  padding: 20px;
+  border-radius: 18px;
+  margin-top: 25px;
+}
+
+input {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.buy-button {
+  width: 100%;
+  border: none;
+  background: #16a34a;
+  color: white;
+  padding: 17px;
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 700;
+  margin-top: 15px;
+}
+
+/* MESSAGE */
+
+#message {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 65px;
+  background: white;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-item {
+  text-align: center;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.nav-item.active {
+  color: #16a34a;
+  font-weight: 700;
+}
+
+.nav-icon {
+  font-size: 21px;
+  display: block;
+  margin-bottom: 3px;
+}
+</style>
 </head>
 
 <body>
 
-<header>
-  <h1>DataVault</h1>
-  <p>Buy data quickly and easily</p>
+<header class="header">
+
+  <div class="logo">
+    Data<span>Vaulti</span>
+  </div>
+
+  <p>Fast, simple and reliable data.</p>
+
 </header>
 
-<div class="container">
 
-  <div class="card">
-    <h2>1. Select Network</h2>
+<main class="container">
 
-    <div class="network">
-      <button onclick="selectNetwork('MTN')">MTN</button>
-      <button onclick="selectNetwork('Airtel')">Airtel</button>
-      <button onclick="selectNetwork('Glo')">Glo</button>
-      <button onclick="selectNetwork('9mobile')">9mobile</button>
-    </div>
+  <!-- BALANCE -->
 
-    <p id="selectedNetwork"></p>
+  <div class="balance">
+
+    <small>Wallet Balance</small>
+
+    <h2>₦0.00</h2>
+
   </div>
 
-  <div class="card">
-    <h2>2. Select Data Plan</h2>
+
+  <!-- NETWORKS -->
+
+  <section class="section">
+
+    <div class="section-title">
+      Choose Network
+    </div>
+
+    <div class="networks">
+
+      <button class="network" onclick="selectNetwork('MTN')">
+        🟡 MTN
+      </button>
+
+      <button class="network" onclick="selectNetwork('Airtel')">
+        🔴 Airtel
+      </button>
+
+      <button class="network" onclick="selectNetwork('Glo')">
+        🟢 Glo
+      </button>
+
+      <button class="network" onclick="selectNetwork('9mobile')">
+        🟢 9mobile
+      </button>
+
+    </div>
+
+    <p id="networkMessage"></p>
+
+  </section>
+
+
+  <!-- PLANS -->
+
+  <section class="section">
+
+    <div class="section-title">
+      Popular Data Plans
+    </div>
 
     <div class="plans">
+
       <button class="plan" onclick="selectPlan('500MB', 200)">
-        500MB — ₦200
-        <span>30 days</span>
+
+        <strong>500MB</strong>
+
+        <p>30 Days</p>
+
+        <b>₦200</b>
+
       </button>
+
 
       <button class="plan" onclick="selectPlan('1GB', 350)">
-        1GB — ₦350
-        <span>30 days</span>
+
+        <strong>1GB</strong>
+
+        <p>30 Days</p>
+
+        <b>₦350</b>
+
       </button>
+
 
       <button class="plan" onclick="selectPlan('2GB', 650)">
-        2GB — ₦650
-        <span>30 days</span>
+
+        <strong>2GB</strong>
+
+        <p>30 Days</p>
+
+        <b>₦650</b>
+
       </button>
+
 
       <button class="plan" onclick="selectPlan('5GB', 1500)">
-        5GB — ₦1,500
-        <span>30 days</span>
+
+        <strong>5GB</strong>
+
+        <p>30 Days</p>
+
+        <b>₦1,500</b>
+
       </button>
+
     </div>
 
-    <p id="selectedPlan"></p>
-  </div>
+  </section>
 
-  <div class="card">
-    <h2>3. Phone Number</h2>
+
+  <!-- BUY -->
+
+  <div class="buy-card">
+
+    <div class="section-title">
+      Buy Data
+    </div>
 
     <input
       type="tel"
       id="phone"
-      placeholder="Enter phone number"
+      placeholder="Enter recipient phone number"
       maxlength="11"
     >
 
-    <button class="buy" onclick="buyData()">
+    <button
+      class="buy-button"
+      onclick="buyData()"
+    >
       Continue
     </button>
 
     <p id="message"></p>
+
   </div>
 
-</div>
+</main>
+
+
+<!-- BOTTOM NAV -->
+
+<nav class="bottom-nav">
+
+  <div class="nav-item active">
+    <span class="nav-icon">⌂</span>
+    Home
+  </div>
+
+  <div class="nav-item">
+    <span class="nav-icon">📱</span>
+    Buy Data
+  </div>
+
+  <div class="nav-item">
+    <span class="nav-icon">🧾</span>
+    History
+  </div>
+
+  <div class="nav-item">
+    <span class="nav-icon">👤</span>
+    Account
+  </div>
+
+</nav>
+
 
 <script>
 
-let network = "";
-let plan = "";
-let price = 0;
+let selectedNetwork = "";
+let selectedPlan = "";
+let selectedPrice = 0;
 
-function selectNetwork(name) {
-  network = name;
 
-  document.getElementById("selectedNetwork").innerText =
-    "Selected network: " + name;
+function selectNetwork(network) {
+
+  selectedNetwork = network;
+
+  document.getElementById("networkMessage").innerText =
+    "Selected: " + network;
+
 }
 
-function selectPlan(name, amount) {
-  plan = name;
-  price = amount;
 
-  document.getElementById("selectedPlan").innerText =
-    "Selected plan: " + name + " — ₦" + amount;
+function selectPlan(plan, price) {
+
+  selectedPlan = plan;
+
+  selectedPrice = price;
+
+  document.getElementById("message").innerText =
+    plan + " selected — ₦" + price;
+
 }
+
 
 function buyData() {
 
-  const phone = document.getElementById("phone").value;
-  const message = document.getElementById("message");
+  const phone =
+    document.getElementById("phone").value;
 
-  if (network === "") {
-    message.innerText = "Please select a network.";
+  const message =
+    document.getElementById("message");
+
+
+  if (!selectedNetwork) {
+
+    message.innerText =
+      "Please choose a network.";
+
     return;
+
   }
 
-  if (plan === "") {
-    message.innerText = "Please select a data plan.";
+
+  if (!selectedPlan) {
+
+    message.innerText =
+      "Please choose a data plan.";
+
     return;
+
   }
+
 
   if (phone.length !== 11) {
-    message.innerText = "Please enter a valid 11-digit phone number.";
+
+    message.innerText =
+      "Enter a valid 11-digit phone number.";
+
     return;
+
   }
 
+
   message.innerText =
-    "Order ready: " + plan + " " + network +
-    " for " + phone + ". Amount: ₦" + price;
+    "Order ready: " +
+    selectedPlan +
+    " " +
+    selectedNetwork +
+    " for " +
+    phone +
+    " — ₦" +
+    selectedPrice;
 
 }
 
