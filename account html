@@ -1,1 +1,281 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DataVaulti - Account</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f6f8fb;
+  color: #172033;
+}
+
+.header {
+  background: #111827;
+  color: white;
+  padding: 25px 20px;
+  border-radius: 0 0 25px 25px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.logo span {
+  color: #22c55e;
+}
+
+.container {
+  max-width: 520px;
+  margin: auto;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  padding: 22px;
+  border-radius: 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+h2 {
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 7px;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 11px;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 11px;
+  margin-top: 18px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.register {
+  background: #16a34a;
+  color: white;
+}
+
+.login {
+  background: #111827;
+  color: white;
+}
+
+#message {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.info {
+  background: #f0fdf4;
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 15px;
+  color: #166534;
+  font-size: 14px;
+}
+
+.back {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #16a34a;
+  text-decoration: none;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="logo">
+    Data<span>Vaulti</span>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="card">
+
+    <h2>Create your account</h2>
+
+    <p class="subtitle">
+      Create an account to manage your DataVaulti orders.
+    </p>
+
+    <label>Full Name</label>
+
+    <input
+      type="text"
+      id="name"
+      placeholder="Enter your full name"
+    >
+
+    <label>Phone Number</label>
+
+    <input
+      type="tel"
+      id="phone"
+      placeholder="08012345678"
+      maxlength="11"
+    >
+
+    <label>Email Address</label>
+
+    <input
+      type="email"
+      id="email"
+      placeholder="you@example.com"
+    >
+
+    <label>Password</label>
+
+    <input
+      type="password"
+      id="password"
+      placeholder="Create a password"
+    >
+
+    <button
+      class="register"
+      onclick="register()"
+    >
+      Create Account
+    </button>
+
+    <p id="message"></p>
+
+    <div class="info">
+      🔐 This is currently a prototype. We will add secure
+      account storage and authentication when we build the
+      DataVaulti backend.
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <h2>Already have an account?</h2>
+
+    <p class="subtitle">
+      Login will be connected to the secure backend later.
+    </p>
+
+    <button
+      class="login"
+      onclick="login()"
+    >
+      Login
+    </button>
+
+  </div>
+
+  <a class="back" href="index.html">
+    ← Back to DataVaulti
+  </a>
+
+</main>
+
+<script>
+
+function register() {
+
+  const name =
+    document.getElementById("name").value;
+
+  const phone =
+    document.getElementById("phone").value;
+
+  const email =
+    document.getElementById("email").value;
+
+  const password =
+    document.getElementById("password").value;
+
+  const message =
+    document.getElementById("message");
+
+
+  if (!name || !phone || !email || !password) {
+
+    message.innerText =
+      "Please complete all fields.";
+
+    return;
+
+  }
+
+
+  if (phone.length !== 11) {
+
+    message.innerText =
+      "Enter a valid 11-digit Nigerian phone number.";
+
+    return;
+
+  }
+
+
+  if (password.length < 6) {
+
+    message.innerText =
+      "Password must be at least 6 characters.";
+
+    return;
+
+  }
+
+
+  message.innerText =
+    "Account information received. Backend authentication will be connected next.";
+
+}
+
+
+function login() {
+
+  document.getElementById("message").innerText =
+    "Login will be connected to the secure backend next.";
+
+}
+
+</script>
+
+</body>
+</html>
