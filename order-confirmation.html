@@ -135,11 +135,26 @@
 
   </div>
 
-  <script>
-    function confirmPayment() {
-      alert("Payment will be connected here next.");
-    }
-  </script>
+  
+    <script>
+  const params = new URLSearchParams(window.location.search);
+
+  const network = params.get("network") || "MTN";
+  const plan = params.get("plan") || "1GB";
+  const phone = params.get("phone") || "08012345678";
+  const amount = params.get("amount") || "350";
+
+  document.getElementById("network").textContent = network;
+  document.getElementById("plan").textContent = plan;
+  document.getElementById("phone").textContent = phone;
+  document.getElementById("amount").textContent =
+    "₦" + Number(amount).toLocaleString();
+
+  function confirmPayment() {
+    alert("Payment will be connected here next.");
+  }
+</script>
+  
 
 </body>
 </html>
