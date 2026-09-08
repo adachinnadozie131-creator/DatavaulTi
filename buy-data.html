@@ -274,23 +274,7 @@
     "&amount=" + encodeURIComponent(price);
 
   window.location.href = url;
-}
-      const phone = document.getElementById("phone").value.trim();
-      const plan = document.getElementById("plan");
-      const price = Number(plan.value);
 
-      if (phone.length !== 11) {
-        alert("Please enter a valid 11-digit phone number.");
-        return;
-      }
-
-      alert(
-        "Order ready!\\n\\n" +
-        "Network: " + network + "\\n" +
-        "Plan: " + plan.options[plan.selectedIndex].text + "\\n" +
-        "Phone: " + phone + "\\n" +
-        "Amount: ₦" + price.toLocaleString()
-      );
     }
   </script>
 
