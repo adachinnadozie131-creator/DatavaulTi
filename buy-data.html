@@ -256,6 +256,25 @@
     }
 
     function continueOrder() {
+  const phone = document.getElementById("phone").value.trim();
+  const plan = document.getElementById("plan");
+  const price = Number(plan.value);
+  const planName = plan.options[plan.selectedIndex].text;
+
+  if (phone.length !== 11) {
+    alert("Please enter a valid 11-digit phone number.");
+    return;
+  }
+
+  const url =
+    "order-confirmation.html" +
+    "?network=" + encodeURIComponent(network) +
+    "&plan=" + encodeURIComponent(planName) +
+    "&phone=" + encodeURIComponent(phone) +
+    "&amount=" + encodeURIComponent(price);
+
+  window.location.href = url;
+}
       const phone = document.getElementById("phone").value.trim();
       const plan = document.getElementById("plan");
       const price = Number(plan.value);
