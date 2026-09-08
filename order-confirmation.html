@@ -1,1 +1,145 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirm Order - DataVaulti</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #f5f7f6;
+      color: #17211b;
+    }
+
+    .header {
+      background: #0b8f4d;
+      color: white;
+      padding: 22px 18px;
+      border-radius: 0 0 22px 22px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .header p {
+      margin: 6px 0 0;
+    }
+
+    .container {
+      padding: 20px 16px 100px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 18px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .row:last-child {
+      border-bottom: none;
+    }
+
+    .label {
+      color: #666;
+    }
+
+    .value {
+      font-weight: bold;
+    }
+
+    .amount {
+      font-size: 22px;
+      color: #0b8f4d;
+    }
+
+    .pay {
+      width: 100%;
+      border: none;
+      background: #0b8f4d;
+      color: white;
+      padding: 16px;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+      color: #0b8f4d;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    <h1>Confirm Order</h1>
+    <p>Please check your order details</p>
+  </div>
+
+  <div class="container">
+
+    <div class="card">
+
+      <div class="row">
+        <span class="label">Network</span>
+        <span class="value" id="network">MTN</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Data Plan</span>
+        <span class="value" id="plan">1GB</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Phone Number</span>
+        <span class="value" id="phone">08012345678</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Amount</span>
+        <span class="value amount" id="amount">₦350</span>
+      </div>
+
+      <button class="pay" onclick="confirmPayment()">
+        Confirm & Pay
+      </button>
+
+      <a class="back" href="buy-data.html">
+        ← Back to Buy Data
+      </a>
+
+    </div>
+
+  </div>
+
+  <script>
+    function confirmPayment() {
+      alert("Payment will be connected here next.");
+    }
+  </script>
+
+</body>
+</html>
