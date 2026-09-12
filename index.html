@@ -407,55 +407,37 @@ function selectPlan(plan, price) {
 
 }
 
-
 function buyData() {
 
-  const phone =
-    document.getElementById("phone").value;
-
-  const message =
-    document.getElementById("message");
-
+  const phone = document.getElementById("phone").value;
 
   if (!selectedNetwork) {
-
-    message.innerText =
+    document.getElementById("message").innerText =
       "Please choose a network.";
-
     return;
-
   }
-
 
   if (!selectedPlan) {
-
-    message.innerText =
+    document.getElementById("message").innerText =
       "Please choose a data plan.";
-
     return;
-
   }
-
 
   if (phone.length !== 11) {
-
-    message.innerText =
+    document.getElementById("message").innerText =
       "Enter a valid 11-digit phone number.";
-
     return;
-
   }
 
+  const url =
+    "order-confirmation.html" +
+    "?network=" + encodeURIComponent(selectedNetwork) +
+    "&plan=" + encodeURIComponent(selectedPlan) +
+    "&phone=" + encodeURIComponent(phone) +
+    "&amount=" + encodeURIComponent(selectedPrice);
 
-  message.innerText =
-    "Order ready: " +
-    selectedPlan +
-    " " +
-    selectedNetwork +
-    " for " +
-    phone +
-    " — ₦" +
-    selectedPrice;
+  window.location.href = url;
+}
 
 }
 
