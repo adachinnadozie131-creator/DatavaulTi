@@ -158,8 +158,28 @@
     "₦" + Number(amount).toLocaleString();
 
   function confirmPayment() {
-    alert("Button is working");
-  }
+  const paystack = new PaystackPop();
+
+  paystack.newTransaction({
+    key: "pk_test_fd16bc0b3e2d7ad15a7db24bfa32a5fccf104a22
+    email: "adachinnadozie131@gmail.com",
+    amount: Number(amount) * 100,
+    currency: "NGN",
+
+    onSuccess: (transaction) => {
+      alert("Payment successful! Reference: " + transaction.reference);
+    },
+
+    onCancel: () => {
+      alert("Payment cancelled.");
+    },
+
+    onError: (error) => {
+      alert("Payment error: " + error.message);
+    }
+  });
+}
+  
 </script>
   
 
