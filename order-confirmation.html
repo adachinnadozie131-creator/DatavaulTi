@@ -157,10 +157,26 @@
   document.getElementById("phone").textContent = phone;
   document.getElementById("amount").textContent =
     "₦" + Number(amount).toLocaleString();
+      
+function confirmPayment() {
 
-  function confirmPayment() {
-    alert("Payment will be connected here next.");
-  }
+  const handler = PaystackPop.setup({
+    key: pk_test_fd16bc0b3e2d7ad15a7db24bfa32a5fccf104a22
+    email: "adachinnadozie131@gmail.com",
+    amount: Number(amount) * 100,
+    currency: "NGN",
+
+    callback: function(response) {
+      alert("Payment successful! Reference: " + response.reference);
+    },
+
+    onClose: function() {
+      alert("Payment window closed.");
+    }
+  });
+
+  handler.openIframe();
+}
 </script>
   
 
