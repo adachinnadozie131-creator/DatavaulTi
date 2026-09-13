@@ -143,8 +143,7 @@
 
   </div>
 
-  
-    <script>
+<script>
   const params = new URLSearchParams(window.location.search);
 
   const network = params.get("network") || "MTN";
@@ -157,36 +156,10 @@
   document.getElementById("phone").textContent = phone;
   document.getElementById("amount").textContent =
     "₦" + Number(amount).toLocaleString();
-      
-      function confirmPayment() {
-        alert("Button is working");
 
-  const paystack = new PaystackPop();
-
-  paystack.newTransaction({
-
-    key: "pk_test
-
-    email: "adachinnadozie131@gmail.com",
-
-    amount: Number(amount) * 100,
-
-    currency: "NGN",
-
-    onSuccess: (transaction) => {
-      alert("Payment successful! Reference: " + transaction.reference);
-    },
-
-    onCancel: () => {
-      alert("Payment cancelled.");
-    },
-
-    onError: (error) => {
-      alert("Payment error: " + error.message);
-    }
-
-  });
-}
+  function confirmPayment() {
+    alert("Button is working");
+  }
 </script>
   
 
