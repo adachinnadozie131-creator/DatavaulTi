@@ -4,57 +4,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Confirm Order - DataVaulti</title>
+
+  <title>Confirm Order - DatavaulTi</title>
+
+  <!-- Paystack -->
+  <script src="https://js.paystack.co/v2/inline.js"></script>
 
   <style>
     * {
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
     }
 
     body {
       margin: 0;
-      background: #f5f7f6;
-      color: #17211b;
-    } 
-    .header {
-  background: #111827;
-  color: white;
-  padding: 28px 20px;
-  border-radius: 0 0 28px 28px;
-  text-align: center;
-}
-
-    .header h1 {
-      margin: 0;
-      font-size: 24px;
-    }
-
-    .header p {
-      margin: 6px 0 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7f6;
+      color: #222;
     }
 
     .container {
-      padding: 20px 16px 100px;
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
     }
-    
-.card {
-  background: white;
-  padding: 24px;
-  border-radius: 22px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-  margin-top: 10px;
-}
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      text-align: center;
+      color: #087f23;
+      margin-bottom: 25px;
+    }
 
     .row {
       display: flex;
       justify-content: space-between;
       padding: 14px 0;
       border-bottom: 1px solid #eee;
-    }
-
-    .row:last-child {
-      border-bottom: none;
     }
 
     .label {
@@ -65,51 +56,56 @@
       font-weight: bold;
     }
 
-    .amount {
-      font-size: 22px;
-      color: #0b8f4d;
+    .total {
+      font-size: 20px;
+      color: #087f23;
+      margin-top: 10px;
     }
+
     .pay {
-  width: 100%;
-  border: none;
-  background: #16a34a;
-  color: white;
-  padding: 18px;
-  border-radius: 14px;
-  font-size: 17px;
-  font-weight: bold;
-  margin-top: 22px;
-  cursor: pointer;
-}
+      width: 100%;
+      padding: 15px;
+      margin-top: 25px;
+      border: none;
+      border-radius: 10px;
+      background: #087f23;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .pay:hover {
+      opacity: 0.9;
+    }
 
     .back {
       display: block;
       text-align: center;
-      margin-top: 15px;
-      color: #0b8f4d;
+      margin-top: 18px;
+      color: #087f23;
       text-decoration: none;
     }
+
+    .note {
+      margin-top: 20px;
+      padding: 12px;
+      background: #f0f8f2;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #555;
+      text-align: center;
+    }
   </style>
-  <script src="https://js.paystack.co/v2/inline.js"></script>
 </head>
 
 <body>
 
-  <div class="header">
-    <h1>Confirm Order</h1>
-    <p>Please check your order details</p>
-  </div>
-
   <div class="container">
 
     <div class="card">
-      <h2 style="margin-top: 0; margin-bottom: 8px;">
-  Order Summary
-</h2>
 
-<p style="color: #666; margin-bottom: 18px;">
-  Review your data purchase before payment.
-</p>
+      <h1>Confirm Your Order</h1>
 
       <div class="row">
         <span class="label">Network</span>
@@ -126,9 +122,9 @@
         <span class="value" id="phone">08012345678</span>
       </div>
 
-      <div class="row">
-        <span class="label">Amount</span>
-        <span class="value amount" id="amount">₦350</span>
+      <div class="row total">
+        <span>Total</span>
+        <span id="amount">₦350</span>
       </div>
 
       <button class="pay" onclick="confirmPayment()">
@@ -139,49 +135,89 @@
         ← Back to Buy Data
       </a>
 
+      <div class="note">
+        You are currently using Paystack Test Mode.
+      </div>
+
     </div>
 
   </div>
 
-<script>
-  const params = new URLSearchParams(window.location.search);
+  <script>
+    const params = new URLSearchParams(window.location.search);
 
-  const network = params.get("network") || "MTN";
-  const plan = params.get("plan") || "1GB";
-  const phone = params.get("phone") || "08012345678";
-  const amount = params.get("amount") || "350";
+    const network = params.get("network") || "MTN";
+    const plan = params.get("plan") || "1GB";
+    const phone = params.get("phone") || "08012345678";
+    const amount = params.get("amount") || "350";
 
-  document.getElementById("network").textContent = network;
-  document.getElementById("plan").textContent = plan;
-  document.getElementById("phone").textContent = phone;
-  document.getElementById("amount").textContent =
-    "₦" + Number(amount).toLocaleString();
+    document.getElementById("network").textContent = network;
+    document.getElementById("plan").textContent = plan;
+    document.getElementById("phone").textContent = phone;
 
-  function confirmPayment() {
-  const paystack = new PaystackPop();
+    document.getElementById("amount").textContent =
+      "₦" + Number(amount).toLocaleString();
 
-  paystack.newTransaction({
-    key: "pk_test_fd16bc0b3e2d7ad15a7db24bfa32a5fccf104a22
-    email: "adachinnadozie131@gmail.com",
-    amount: Number(amount) * 100,
-    currency: "NGN",
 
-    onSuccess: (transaction) => {
-      alert("Payment successful! Reference: " + transaction.reference);
-    },
+    function confirmPayment() {
 
-    onCancel: () => {
-      alert("Payment cancelled.");
-    },
+      const paystack = new Paystack();
 
-    onError: (error) => {
-      alert("Payment error: " + error.message);
+      paystack.newTransaction({
+
+        /* 
+          REPLACE THE TEXT BELOW WITH
+          YOUR REAL pk_test_ PUBLIC KEY.
+          
+          DO NOT PUT YOUR SECRET KEY HERE.
+        */
+        key: "pk_test_pk_test_fd16bc0b3e2d7ad15a7db24bfa32a5fccf104a22",
+
+        email: "adachinnadozie131@gmail.com",
+
+        amount: Number(amount) * 100,
+
+        currency: "NGN",
+
+        metadata: {
+          custom_fields: [
+            {
+              display_name: "Network",
+              variable_name: "network",
+              value: network
+            },
+            {
+              display_name: "Data Plan",
+              variable_name: "data_plan",
+              value: plan
+            },
+            {
+              display_name: "Phone Number",
+              variable_name: "phone_number",
+              value: phone
+            }
+          ]
+        },
+
+        onSuccess: (transaction) => {
+
+          alert(
+            "Payment successful!\n\n" +
+            "Reference: " + transaction.reference
+          );
+
+        },
+
+        onCancel: () => {
+
+          alert("Payment was cancelled.");
+
+        }
+
+      });
+
     }
-  });
-}
-  
-</script>
-  
+  </script>
 
 </body>
 </html>
