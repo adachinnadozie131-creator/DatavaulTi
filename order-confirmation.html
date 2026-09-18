@@ -143,81 +143,41 @@
 
   </div>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
+  
+    <script>
+  const params = new URLSearchParams(window.location.search);
 
-    const network = params.get("network") || "MTN";
-    const plan = params.get("plan") || "1GB";
-    const phone = params.get("phone") || "08012345678";
-    const amount = params.get("amount") || "350";
+  const network = params.get("network") || "MTN";
+  const plan = params.get("plan") || "1GB";
+  const phone = params.get("phone") || "08012345678";
+  const amount = params.get("amount") || "350";
 
-    document.getElementById("network").textContent = network;
-    document.getElementById("plan").textContent = plan;
-    document.getElementById("phone").textContent = phone;
+  document.getElementById("network").textContent = network;
+  document.getElementById("plan").textContent = plan;
+  document.getElementById("phone").textContent = phone;
+  document.getElementById("amount").textContent =
+    "₦" + Number(amount).toLocaleString();
 
-    document.getElementById("amount").textContent =
-      "₦" + Number(amount).toLocaleString();
+  function confirmPayment() {
 
+    const paystack = new Paystack();
 
-    function confirmPayment() {
+    paystack.newTransaction({
+      key: "pk_test_fd16bc0b3e2d7ad15a7db24bfa32a5fccf104a22",
+      email: "adachinnadozie131@gmail.com",
+      amount: Number(amount) * 100,
+      currency: "NGN",
 
-      const paystack = new Paystack();
+      onSuccess: function(transaction) {
+        alert("Payment successful! Reference: " + transaction.reference);
+      },
 
-      paystack.newTransaction({
-
-        /* 
-          REPLACE THE TEXT BELOW WITH
-          YOUR REAL pk_test_ PUBLIC KEY.
-          
-          DO NOT PUT YOUR SECRET KEY HERE.
-        */
-        key: pk_test_fd16bc0b3e2d7ad15a7db24bfa32a5fccf104a22",
-
-        email: "adachinnadozie131@gmail.com",
-
-        amount: Number(amount) * 100,
-
-        currency: "NGN",
-
-        metadata: {
-          custom_fields: [
-            {
-              display_name: "Network",
-              variable_name: "network",
-              value: network
-            },
-            {
-              display_name: "Data Plan",
-              variable_name: "data_plan",
-              value: plan
-            },
-            {
-              display_name: "Phone Number",
-              variable_name: "phone_number",
-              value: phone
-            }
-          ]
-        },
-
-        onSuccess: (transaction) => {
-
-          alert(
-            "Payment successful!\n\n" +
-            "Reference: " + transaction.reference
-          );
-
-        },
-
-        onCancel: () => {
-
-          alert("Payment was cancelled.");
-
-        }
-
-      });
-
-    }
-  </script>
+      onCancel: function() {
+        alert("Payment cancelled.");
+      }
+    });
+  }
+</script>
 
 </body>
 </html>
