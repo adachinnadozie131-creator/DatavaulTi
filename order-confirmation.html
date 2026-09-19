@@ -157,26 +157,28 @@
   document.getElementById("phone").textContent = phone;
   document.getElementById("amount").textContent =
     "₦" + Number(amount).toLocaleString();
+function confirmPayment() {
+  const handler = PaystackPop.setup({
+    key: "pk_test_fd16bc0b3e2d7ad15a7db24bfa32a5fccf104a22",
+    email: "adachinnadozie131@gmail.com",
+    amount: Number(amount) * 100,
+    currency: "NGN",
 
-  function confirmPayment() {
+    callback: function(response) {
+      alert(
+        "Payment successful!\nReference: " +
+        response.reference
+      );
+    },
 
-    const paystack = new Paystack();
+    onClose: function() {
+      alert("Payment window closed.");
+    }
+  });
 
-    paystack.newTransaction({
-      key:"pk_test_fd16bc0b3e2d7ad15a7db24bfa32a5fccf104a22",
-      email: "adachinnadozie131@gmail.com",
-      amount: Number(amount) * 100,
-      currency: "NGN",
-
-      onSuccess: function(transaction) {
-        alert("Payment successful! Reference: " + transaction.reference);
-      },
-
-      onCancel: function() {
-        alert("Payment cancelled.");
-      }
-    });
-  }
+  handler.openIframe();
+}
+  
 </script>
 
 </body>
